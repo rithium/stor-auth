@@ -53,7 +53,7 @@ func main() {
 
 	env := &Env{db}
 
-	log.Println("Stor Node", version.GetVersion())
+	log.Println("Stor Auth", version.GetVersion())
 
 	router := mux.NewRouter()
 
