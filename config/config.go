@@ -1,5 +1,10 @@
 package config
 
+import (
+	"strconv"
+	"os"
+)
+
 type HttpServerConfig struct {
 	Uri		string
 	Port		int
@@ -18,13 +23,27 @@ var (
 	MySQL 		MySQLConfig
 )
 
+const ENV_HTTP_URL = "S_URL"
+const ENV_HTTP_PORT = "S_PORT"
+
+const DEFAULT_HTTP_URL = "0.0.0.0"
+const DEFAULT_HTTP_PORT = "80"
+
 func LoadConfig() {
-	HttpServer.Uri = "0.0.0.0"
-	HttpServer.Port = 11001
+	HttpServer.Uri = getEnv(ENV_HTTP_URL, DEFAULT_HTTP_URL)
+	HttpServer.Port, _ = strconv.Atoi(getEnv(ENV_HTTP_PORT, DEFAULT_HTTP_PORT))
 
 	MySQL.Url = "localhost"
 	MySQL.Port = "3306"
 	MySQL.User = "root"
 	MySQL.Pass = "toor"
 	MySQL.Database = "stor"
+}
+
+func getEnv(name string, defaultValue string) (string) {
+	if value := os.Getenv(name); value != "" {
+		return value
+	}
+
+	return defaultValue
 }
