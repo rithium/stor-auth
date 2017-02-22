@@ -46,7 +46,7 @@ func (db *DB)CreateApiKey()(*ApiKey, error) {
 }
 
 func (db*DB)FindActiveKey(key string)(*ApiKey, error) {
-	result, err := db.Query(`select id, `+"`key`"+`, active, created from apikey where `+"`key`"+` = ? and active = 1`,
+	result, err := db.Query(`select id, `+"`key`"+`, active, created from apiKey where `+"`key`"+` = ? and active = 1`,
 		key)
 
 	if err != nil {
@@ -69,7 +69,7 @@ func (db*DB)FindActiveKey(key string)(*ApiKey, error) {
 }
 
 func (db *DB)KeyExists(key string)(bool, error) {
-	result, err := db.Query(`select * from apikey where `+"`key`"+` = ?`,
+	result, err := db.Query(`select * from apiKey where `+"`key`"+` = ?`,
 		key)
 
 	if err != nil {
