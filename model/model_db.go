@@ -3,7 +3,7 @@ package model
 import (
 	"database/sql"
 	_ "github.com/go-sql-driver/mysql"
-	"github.com/rithium/auth/config"
+	"github.com/rithium/stor-auth/config"
 	"log"
 	"github.com/go-sql-driver/mysql"
 )
