@@ -25,7 +25,7 @@ var (
 
 const ENV_HTTP_URL = "S_URL"
 const ENV_HTTP_PORT = "S_PORT"
-
+const ENV_MYSQL_PORT = "S_MYSQL_PASS"
 const DEFAULT_HTTP_URL = "0.0.0.0"
 const DEFAULT_HTTP_PORT = "80"
 
@@ -36,7 +36,7 @@ func LoadConfig() {
 	MySQL.Url = "localhost"
 	MySQL.Port = "3306"
 	MySQL.User = "root"
-	MySQL.Pass = "toor"
+	MySQL.Pass = getEnv(ENV_MYSQL_PORT, "")
 	MySQL.Database = "stor"
 }
 
